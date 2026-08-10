@@ -1,0 +1,243 @@
+/*
+ * Coursework: CB23F35 - Low-Code Application Development using Zoho Creator
+ * Experiment 4: Data Modelling and Form Design
+ * Form Name: Service_Request_Form
+ * File Name: Exp4_Service_Request_Form.ds
+ */
+
+form Service_Request_Form
+{
+    success message = "Data Added Successfully!"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+    
+    must have Owner_Name
+    (
+        type = name
+        displayname = "Owner Name"
+        prefix
+        (
+            type = prefix
+            displayname = "Prefix"
+            visibility = false
+            value = {"Mr.","Mrs.","Ms."}
+        )
+        first_name
+        (
+            type = first_name
+            displayname = "First Name"
+        )
+        last_name
+        (
+            type = last_name
+            displayname = "Last Name"
+        )
+        suffix
+        (
+            type = suffix
+            displayname = "Suffix"
+            visibility = false
+        )
+        row = 1
+        column = 1
+        width = medium
+        personal data = true
+    )
+
+    Email_Address
+    (
+        type = email
+        displayname = "Email Address"
+        maxchar = 80
+        row = 1
+        column = 1
+        width = medium
+        personal data = true
+    )
+
+    Pickup_Address
+    (
+        type = address
+        displayname = "Pickup Address"
+        capture_coordinates = true
+        adjust_using_map = false
+        address_line_1
+        (
+            type = address_line_1
+            displayname = "Address Line 1"
+        )
+        address_line_2
+        (
+            type = address_line_2
+            displayname = "Address Line 2"
+        )
+        district_city
+        (
+            type = district_city
+            displayname = "City / District"
+        )
+        state_province
+        (
+            type = state_province
+            displayname = "State / Province"
+        )
+        postal_Code
+        (
+            type = postal_Code
+            displayname = "Postal Code"
+        )
+        country
+        (
+            type = country
+            displayname = "Country"
+        )
+        latitude
+        (
+            type = latitude
+            displayname = "latitude"
+            visibility = false
+        )
+        longitude
+        (
+            type = longitude
+            displayname = "longitude"
+            visibility = false
+        )
+        row = 1
+        column = 1
+        width = medium
+        personal data = true
+    )
+
+    Contact_Number
+    (
+        type = phonenumber
+        displayname = "Contact Number"
+        row = 1
+        column = 1
+        width = medium
+        personal data = true
+    )
+
+    Vehicle_Registration_Number
+    (
+        type = text
+        displayname = "Vehicle Registration Number"
+        row = 1
+        column = 1
+        width = medium
+    )
+
+    Issue_Description
+    (
+        type = textarea
+        displayname = "Describe the Issue"
+        height = 100px
+        row = 1
+        column = 1
+        width = medium
+    )
+
+    Odometer_Reading
+    (
+        type = number
+        displayname = "Odometer Reading (km)"
+        row = 1
+        column = 1
+        width = medium
+    )
+
+    Preferred_Service_Date
+    (
+        type = date
+        displayname = "Preferred Service Date"
+        alloweddays = 0,1,2,3,4,5,6
+        row = 1
+        column = 1
+        width = medium
+    )
+
+    Preferred_Dropoff_Time
+    (
+        type = time
+        displayname = "Preferred Drop-off Time"
+        timedisplayoptions = "hh:mm:ss"
+        row = 1
+        column = 1
+        width = medium
+    )
+
+    Vehicle_Type
+    (
+        type = picklist
+        displayname = "Vehicle Type"
+        maxchar = 100
+        values = {"Hatchback","Sedan","Other"}
+        row = 1
+        column = 1
+        width = medium
+    )
+
+    Service_Type
+    (
+        type = radiobuttons
+        displayname = "Service Type"
+        maxchar = 100
+        values = {"Routine Service","Breakdown Repair","Accident Repair"}
+        row = 1
+        column = 1
+        width = medium
+    )
+
+    Additional_Services_Requested
+    (
+        type = list
+        displayname = "Additional Services Requested"
+        values = {"Car Wash","Interior Cleaning","Tyre Rotation","Wheel Alignment","AC Service"}
+        height = 60px
+        row = 1
+        column = 1
+        width = medium
+    )
+
+    must have Authorize_Estimate_And_Repair
+    (
+        type = checkboxes
+        displayname = "Authorization"
+        values = {"I authorize the service center to prepare an estimate and proceed with the service/repair"}
+        row = 1
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}
